@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="login-page" id="user-view">
+      <h2>Twoje dane:</h2>
+    <font size="5">
+        <h3>Imię: {{ user.first_name }}</h3>
+        <h3>Nazwisko: {{ user.last_name }}</h3>
+        <h3>e-mail: {{ user.email }}</h3>
+       </font>
+</section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section class="login-page" id="setting-page">
+      <h2>Edycja danych</h2>
+        <font size="5">
+        <form method="post" action="">
+          {% csrf_token %}
+        <div class="form-group">
+{#          <input type="text" name="first_name" placeholder="Imię" />#}
+          Imię:  {{ form.first_name }}
+        </div>
+         <div class="form-group">
+{#          <input type="text" name="last_name" placeholder="Nazwisko" />#}
+            Nazwisko: {{ form.last_name }}
+        </div>
+
+        <div class="form-group">
+{#          <input type="password" name="password" placeholder="Hasło" />#}
+         Hasło:   {{ form.password }}
+        </div>
+        <div class="form-group">
+{#          <input type="password" name="password2" placeholder="Powtórz hasło" />#}
+        Powtórz hasło: {{ form.password2 }}
+        </div>
+
+{% if form.errors %}
+    <font color="red" size="5">
+    {% for field in form %}
+        {% for error in field.errors %}
+        <h3>{{ error|escape }}</h3>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+          <h3>{{ error|escape }}</h3>
+    {% endfor %}
+{% endif %}</font>
+        <div class="form-group form-group--buttons">
+
+          <button class="btn" type="submit">Zapisz dane</button>
+        </div>
+        </form></font>
+
+    </section>
+{% endblock %}
