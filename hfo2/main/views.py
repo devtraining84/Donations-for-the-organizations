@@ -4,22 +4,22 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
 from django.views.generic import TemplateView
-from main.models import Institution
-from main.forms import LoginForm, UserCreateForm, UserEditForm
+from main.models import Category, Institution
+from main.forms import DonationForm, LoginForm, UserCreateForm, UserEditForm
 
 # Create your views here.
 
 class LandingPageView(View):
     def get(self, request):
-        org1 = Institution.objects.filter(type__contains="fundacja")
-        org2 = Institution.objects.filter(type__contains="organizacj")
-        org3 = Institution.objects.filter(type__contains="lokalna")
-        ctx = {
-            'org1': org1,
-            'org2': org2,
-            'org3': org3,
-        }
-        return render(request, 'index.html', ctx)
+        # org1 = Institution.objects.filter(type__contains="fundacja")
+        # org2 = Institution.objects.filter(type__contains="organizacj")
+        # org3 = Institution.objects.filter(type__contains="lokalna")
+        # ctx = {
+        #     'org1': org1,
+        #     'org2': org2,
+        #     'org3': org3,
+        # }
+        return render(request, 'index.html', {})
 
 
 
@@ -94,5 +94,28 @@ class SettingsUserView(View):
                 user.set_password(form.cleaned_data['password'])
                 form.save()
         return redirect('/')
+
+
+
+
+
+class AddDonationView(LoginRequiredMixin, View):
+    def get(self, request):
+        # category = Category.objects.all()
+        # institution = Institution.objects.all()
+        # ctx = {
+        #     'category': category,
+        #      'institution': institution,
+        # }
+        return render(request, 'form.html',{})
+    
+    # def post(self, request):
+    #     form = DonationForm(request.POST)
+    #     if form.is_valid():
+    #         x = form.save(commit=False)
+    #         x.user = request.user
+    #         x.save()
+    #         return redirect('/confirmation/')
+    #     return redirect('/confirmation/')
 
     
