@@ -7,26 +7,23 @@
         <form method="post" action="">
           {% csrf_token %}
         <div class="form-group">
-{#          <input type="text" name="first_name" placeholder="Imię" />#}
-            {{ form.first_name }}
+          {{ form.first_name }}
         </div>
          <div class="form-group">
-{#          <input type="text" name="last_name" placeholder="Nazwisko" />#}
-             {{ form.last_name }}
+          {{ form.last_name }}
         </div>
-
-        <div class="form-group">
-{#          <input type="password" name="password" placeholder="Hasło" />#}
-            {{ form.password }}
-        </div>
-        <div class="form-group">
-{#          <input type="password" name="password2" placeholder="Powtórz hasło" />#}
-        {{ form.password2 }}
-        </div>
-        <div class="form-group">
-{#          <input type="hidden" name="username"  />#}
+           <div class="form-group">
+          e-mail:
             {{ form.username }}
+            </div>
+        <div class="form-group">
+         haslo: {{ form.password }}
         </div>
+        <div class="form-group">
+          powtorz haslo: {{ form.password2 }}
+        </div>
+       
+        
 {% if form.errors %}
     <font color="red" size="5">
     {% for field in form %}
