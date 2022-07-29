@@ -97,17 +97,18 @@ class SettingsUserView(View):
 
 
 
+class AddDonationView(TemplateView):
+    template_name = 'form.html'
 
-
-class AddDonationView(LoginRequiredMixin, View):
-    def get(self, request):
+# class AddDonationView(LoginRequiredMixin, View):
+#     def get(self, request):
         # category = Category.objects.all()
         # institution = Institution.objects.all()
         # ctx = {
         #     'category': category,
         #      'institution': institution,
         # }
-        return render(request, 'form.html',{})
+     #  return render(request, 'form.html',{})
     
     # def post(self, request):
     #     form = DonationForm(request.POST)
