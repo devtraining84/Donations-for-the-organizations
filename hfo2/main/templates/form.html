@@ -2,6 +2,39 @@
 {% load static %}
 {% block content %}
 
+
+<header class="header--form-page">
+ 
+  <div class="slogan container container--90">
+      <div class="slogan--item">
+          <h1>
+              Oddaj rzeczy, których już nie chcesz<br/>
+              <span class="uppercase">potrzebującym</span>
+          </h1>
+
+          <div class="slogan--steps">
+              <div class="slogan--steps-title">Wystarczą 4 proste kroki:</div>
+              <ul class="slogan--steps-boxes">
+                  <li>
+                      <div><em>1</em><span>Wybierz rzeczy</span></div>
+                  </li>
+                  <li>
+                      <div><em>2</em><span>Spakuj je w worki</span></div>
+                  </li>
+                  <li>
+                      <div><em>3</em><span>Wybierz fundację</span></div>
+                  </li>
+                  <li>
+                      <div><em>4</em><span>Zamów kuriera</span></div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</header>
+
+ 
+
     <section class="form--steps">
       <div class="form--steps-instructions">
         <div class="form--steps-container">
@@ -79,14 +112,14 @@
                 <span class="description">inne</span>
               </label>
             </div>
-
+<!--  class to button in order to steps of form "next-step" -->
             <div class="form-group form-group--buttons">
-              <button type="button" class="btn next-step">Dalej</button>
+              <button type="button" class="btn rest_api_exe">Dalej</button>
             </div>
           </div>
 
           <!-- STEP 2 -->
-          <div data-step="2">
+          <div data-step="1">
             <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
 
             <div class="form-group form-group--inline">
@@ -105,7 +138,7 @@
 
 
           <!-- STEP 4 -->
-          <div data-step="3">
+          <div data-step="1">
             <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
             <div class="form-group form-group--checkbox">
@@ -143,7 +176,7 @@
           </div>
 
           <!-- STEP 5 -->
-          <div data-step="4">
+          <div data-step="1">
             <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
 
             <div class="form-section form-section--columns">
@@ -195,7 +228,7 @@
           </div>
 
           <!-- STEP 6 -->
-          <div data-step="5">
+          <div data-step="1">
             <h3>Podsumowanie Twojej darowizny</h3>
 
             <div class="summary">

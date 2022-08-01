@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from main.models import Donation
+
 
 #from django.core.exceptions import ValidationError
 
@@ -59,18 +59,18 @@ class UserEditForm(forms.ModelForm):
 
 
 
-class DonationForm(forms.Form):
-    class Meta:
-        model = Donation
-        fields = (
-           'categories',
-           'quantity',
-           'institution',
-           'address',
-           'city',
-           'zip_code',
-           'phone_number',
-           'pick_up_date',
-           'pick_up_time',
-           'pick_up_comment',
-            )
+# class DonationForm(forms.Form):
+#     class Meta:
+#         model = Donation
+#         fields = (
+#            'categories',
+#            'quantity',
+#            'institution',
+#            'address',
+#            'city',
+#            'zip_code',
+#            'phone_number',
+#            'pick_up_date',
+#            'pick_up_time',
+#            'pick_up_comment',
+#             )

@@ -30,8 +30,8 @@
           </li>
         </ul>
 
-{#            <li><a href="/logout/" class="btn btn--small btn--without-border">Wyloguj</a></li>#}
-{#                <li><a href="/userview/#user-view" class="btn btn--small btn--without-border">Profil</a></li>#}
+           <li><a href="/logout/" class="btn btn--small btn--without-border">Wyloguj</a></li>
+                <li><a href="/userview/#user-view" class="btn btn--small btn--without-border">Profil</a></li>
 
         {% else %}
           <li><a href="{% url "login" %}#login-page" class="btn btn--small btn--without-border">Zaloguj</a>
@@ -46,19 +46,13 @@
           <li><a href="../#steps" class="btn btn--without-border">O co chodzi?</a></li>
           <li><a href="../#about-us" class="btn btn--without-border">O nas</a></li>
           <li><a href="../#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
-          <li><a href="../adddonation/#form-instr" class="btn btn--without-border">Przekaż dary</a></li>
+          <li><a href="../adddonation/#slogan--item" class="btn btn--without-border">Przekaż dary</a></li>
           <li><a href="../#contact" class="btn btn--without-border">Kontakt</a></li>
         </ul>
       </nav>
 
-      <div class="slogan container container--90">
-        <div class="slogan--item">
-          <h1>
-            Zacznij pomagać!<br />
-            Oddaj niechciane rzeczy w zaufane ręce
-          </h1>
-        </div>
-      </div>
+    
+     
     </header>
 
 {% block content %}
@@ -89,6 +83,7 @@
     </footer>
 
     <script src="{% static "js/app.js" %}"></script>
+    <script src="{% static "js/rest_api.js" %}"></script>
     <script src="{% static "js/jquery-3.4.1.min.js" %}"></script>
  
   </body>

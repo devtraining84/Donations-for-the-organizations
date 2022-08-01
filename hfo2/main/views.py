@@ -3,11 +3,15 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
-from django.views.generic import TemplateView
-from main.models import Category, Institution
-from main.forms import DonationForm, LoginForm, UserCreateForm, UserEditForm
+from django.views.generic import TemplateView, CreateView
+#from main.models import Category, Institution
+from main.forms import LoginForm, UserCreateForm, UserEditForm
 
 # Create your views here.
+
+    
+    
+
 
 class LandingPageView(View):
     def get(self, request):
@@ -18,6 +22,7 @@ class LandingPageView(View):
         #     'org1': org1,
         #     'org2': org2,
         #     'org3': org3,
+
         # }
         return render(request, 'index.html', {})
 

@@ -2,11 +2,22 @@
 {% load static %}
 {% block content %}
 
+<header class="header--main-page">
+  
+<div class="slogan container container--90">
+  <div class="slogan--item">
+    <h1>
+      Zacznij pomagać!<br />
+      Oddaj niechciane rzeczy w zaufane ręce
+    </h1>
+  </div>
+</div>
+</header>
     
     <section id="stats" class="stats">
       <div class="container container--85">
         <div class="stats--item">
-          {% if user.is_authenticated %}
+          
           <em>10</em>
           <h3>Oddanych worków kurwa</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum tempora!</p>
@@ -16,7 +27,7 @@
           <em>5</em>
           <h3>Wspartych organizacji taaa....</h3>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas quam.</p>
-        {% endif %}
+    
         </div>
 
       </div>
