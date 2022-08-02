@@ -60,12 +60,12 @@
                 <div data-step="1" class="active">
                     <h3>Zaznacz co chcesz oddać:</h3>
 
-                    {% for category in form_category %}
+                    {% for category in form_categories %}
                         <div class="form-group form-group--checkbox">
                             <label>
                                 <input
                                         type="checkbox"
-                                        name="categories"
+                                        name="category"
                                         value="{{ category.id }}"
                                 />
                                 <span class="checkbox"></span>
@@ -97,7 +97,7 @@
                 </div>
 
 
-                <!-- STEP 4 -->
+                <!-- STEP 3 -->
                 <div data-step="3">
                     <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
@@ -135,7 +135,7 @@
                     </div>
                 </div>
 
-                <!-- STEP 5 -->
+                <!-- STEP 4 -->
                 <div data-step="4">
                     <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
 
@@ -187,7 +187,7 @@
                     </div>
                 </div>
 
-                <!-- STEP 6 -->
+                <!-- STEP 5 -->
                 <div data-step="5">
                     <h3>Podsumowanie Twojej darowizny</h3>
 
