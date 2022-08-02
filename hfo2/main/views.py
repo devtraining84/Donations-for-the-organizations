@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
 from django.views.generic import TemplateView, CreateView
-#from main.models import Category, Institution
+from main.models import CategoryModel, InstitutionModel
 from main.forms import LoginForm, UserCreateForm, UserEditForm
 
 # Create your views here.
@@ -15,16 +15,15 @@ from main.forms import LoginForm, UserCreateForm, UserEditForm
 
 class LandingPageView(View):
     def get(self, request):
-        # org1 = Institution.objects.filter(type__contains="fundacja")
-        # org2 = Institution.objects.filter(type__contains="organizacj")
-        # org3 = Institution.objects.filter(type__contains="lokalna")
-        # ctx = {
-        #     'org1': org1,
-        #     'org2': org2,
-        #     'org3': org3,
-
-        # }
-        return render(request, 'index.html', {})
+        foundations = InstitutionModel.objects.filter(type="fundation")
+        non_gov = InstitutionModel.objects.filter(type__contains="non_gov")
+        local = InstitutionModel.objects.filter(type__contains="local")
+        ctx = {
+            'foundations' : foundations, 
+            'non_gov': non_gov,
+            'local': local,
+        }
+        return render(request, 'index.html', ctx)
 
 
 
