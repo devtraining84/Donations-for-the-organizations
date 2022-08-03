@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from main.views import AddDonationView, LandingPageView, LoginView, LogoutView, RegisterView, SettingsUserView, UserView
-
+from main.views import get_institutions_by_id
 urlpatterns = [  
     path('admin/', admin.site.urls),
     path('', LandingPageView.as_view(), name="donations-for-the-organizations"),
@@ -27,4 +27,8 @@ urlpatterns = [
     path('userview/', UserView.as_view(), name="user-view"),
     path('setting/', SettingsUserView.as_view(), name="setting-user"),
     path('adddonation/', AddDonationView.as_view(), name="add-donation"),
+    #path for REST API:
+    path('get_inst_by_id/', get_institutions_by_id, name='get-ins-by-type'),
 ]
+
+  

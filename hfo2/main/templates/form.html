@@ -58,7 +58,9 @@
       <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
-        <form action="form-confirmation.html" method="post">
+        
+        
+        <form action="form-confirmation.html" method="post" name="form">
           <!-- STEP 1: class .active is switching steps -->
           <div data-step="1" class="active">
             <h3>Zaznacz co chcesz oddać:</h3>
@@ -68,7 +70,7 @@
               <label>
                 <input
                   type="checkbox"
-                  name= {{ category.id }}
+                  name= {{ category.name }}
                   value= {{ category.id }}
                 />
                 <span class="checkbox"></span>
@@ -82,6 +84,7 @@
 <!--  class to button in order to steps of form "next-step" -->
             <div class="form-group form-group--buttons">
               <button type="button" class="btn rest_api_exe">Dalej</button>
+            
             </div>
           </div>
 
@@ -102,33 +105,33 @@
             </div>
           </div>
 
-
-
-          <!-- STEP 3 -->
-          <div data-step="1">
-            <h3>Wybierz organizacje, której chcesz pomóc:</h3>
-              {% for ins in institutions %}
-            <div class="form-group form-group--checkbox">
-              <label>
-                <input type="radio" name="organization" value="old" />
-                <span class="checkbox radio"></span>
-                <span class="description">
-                  <div class="title">{{ ins.name }}</div>
-                  <div class="subtitle">
-                   {{ ins.description }}
-                  </div>
-                </span>
-              </label>
-            </div>
-              {% endfor %}
-           
-
-            <div class="form-group form-group--buttons">
-              <button type="button" class="btn prev-step">Wstecz</button>
-              <button type="button" class="btn next-step">Dalej</button>
-            </div>
+<!-- STEP 3 -->
+<div data-step="1">
+  <h3>Wybierz organizacje, której chcesz pomóc:</h3>
+  <div class="form-group form-group--checkbox">
+          
+      <!-- {% for ins in institutions %}
+   
+      <label>
+        <input type="radio" name="organization" value={{ ins.id }} />
+        <span class="checkbox radio"></span>
+        <span class="description">
+          <div class="title">{{ ins.name }}</div>
+          <div class="subtitle">
+           {{ ins.description }}
           </div>
+        </span>
+      </label>
+ 
+      {% endfor %} -->
 
+      {% include 'api_ins.html' %}
+          <div class="form-group form-group--buttons">
+            <button type="button" class="btn prev-step">Wstecz</button>
+            <button type="button" class="btn next-step">Dalej</button>
+          </div>
+        </div>
+</div>
           <!-- STEP 4 -->
           <div data-step="1">
             <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>

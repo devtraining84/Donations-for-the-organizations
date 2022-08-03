@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -106,10 +107,10 @@ class SettingsUserView(View):
 class AddDonationView(LoginRequiredMixin, View):
     def get(self, request):
         categories = CategoryModel.objects.all()
-        institutions = InstitutionModel.objects.all()
+        # institutions = InstitutionModel.objects.all()
         ctx = {
             'categories': categories,
-            'institutions': institutions,
+            # 'institutions': institutions,
         }
         return render(request, 'form.html', ctx)
     
@@ -117,4 +118,17 @@ class AddDonationView(LoginRequiredMixin, View):
         pass
 
 
-    
+
+
+def get_institutions_by_id(request):
+    type_ids = request.GET.getlist('type_ids')
+    if type_ids is not None:
+        categories = CategoryModel.objects.filter(id__in=type_ids)
+        institutions = InstitutionModel.objects.filter(categories__pk__in=type_ids) 
+        info = type_ids
+    else:
+        categories = CategoryModel.objects.filter(id__in=type_ids)
+        info = type_ids
+    return render(request, "api_ins.html", {'info':info, 'categories': categories, 'institutions':institutions,})            
+            
+ 

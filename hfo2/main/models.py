@@ -15,13 +15,20 @@ INSTITUTIONS = [
 
 
 class CategoryModel(models.Model):
+    
+    class Meta:
+        ordering = ('pk',)
     name = models.CharField(max_length=96)
+        
     def __str__(self):
         return f"{self.id} : {self.name}"
 
 
 
 class InstitutionModel(models.Model):
+    class Meta:
+        ordering = ('pk',)
+        
     name = models.CharField(max_length=128)
     description = models.TextField()
     type = models.CharField(choices=INSTITUTIONS, max_length=30, default="fundacja")

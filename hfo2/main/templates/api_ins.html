@@ -1,0 +1,14 @@
+
+{% load static %}
+{% block content %}
+{{info}}
+
+<ul id="li">
+{% for c in institutions %}
+<li> {{c.name}}</li>
+ {% endfor %}  
+
+ </ul>   
+
+
+  {% endblock %}
