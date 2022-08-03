@@ -1,14 +1,44 @@
 
 {% load static %}
 {% block content %}
-{{info}}
 
-<ul id="li">
-{% for c in institutions %}
-<li> {{c.name}}</li>
- {% endfor %}  
 
- </ul>   
-
+  <!-- STEP 3 -->
+  <div data-step="1">
+    <h3>Wybierz organizacje, której chcesz pomóc:</h3>
+    <div class="form-group form-group--checkbox">
+           <ul id="li">
+        {% for ins in institutions %}
+    
+        <label>
+          <input type="radio" name="organization" value={{ ins.id }} />
+          <span class="checkbox radio"></span>
+          <span class="description">
+            <div class="title" id="li" >{{ ins.name }}</div>
+            <div class="subtitle" id="li">
+             {{ ins.description }}<br><br>
+                             </div>
+          </span>
+         
+        </label>
+    
+        {% endfor %}
+</ul>  </div>
+        </div>
+            <div class="form-group form-group--buttons">
+              <button type="button" class="btn prev-step">Wstecz</button>
+              <button type="button" class="btn next-step">Dalej</button>
+            </div>
+          
+        
 
   {% endblock %}
+
+
+
+
+
+
+
+            
+        

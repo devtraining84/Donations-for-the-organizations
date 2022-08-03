@@ -123,12 +123,12 @@ class AddDonationView(LoginRequiredMixin, View):
 def get_institutions_by_id(request):
     type_ids = request.GET.getlist('type_ids')
     if type_ids is not None:
-        categories = CategoryModel.objects.filter(id__in=type_ids)
-        institutions = InstitutionModel.objects.filter(categories__pk__in=type_ids) 
-        info = type_ids
+        
+        institutions = InstitutionModel.objects.filter(categories__pk__in=type_ids).distinct() 
+       
     else:
-        categories = CategoryModel.objects.filter(id__in=type_ids)
-        info = type_ids
-    return render(request, "api_ins.html", {'info':info, 'categories': categories, 'institutions':institutions,})            
+        
+        institutions = InstitutionModel.objects.all()
+    return render(request, "api_ins.html", {'institutions':institutions,})            
             
  

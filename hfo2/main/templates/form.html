@@ -105,33 +105,15 @@
             </div>
           </div>
 
-<!-- STEP 3 -->
-<div data-step="1">
-  <h3>Wybierz organizacje, której chcesz pomóc:</h3>
-  <div class="form-group form-group--checkbox">
-          
-      <!-- {% for ins in institutions %}
-   
-      <label>
-        <input type="radio" name="organization" value={{ ins.id }} />
-        <span class="checkbox radio"></span>
-        <span class="description">
-          <div class="title">{{ ins.name }}</div>
-          <div class="subtitle">
-           {{ ins.description }}
-          </div>
-        </span>
-      </label>
- 
-      {% endfor %} -->
 
-      {% include 'api_ins.html' %}
-          <div class="form-group form-group--buttons">
-            <button type="button" class="btn prev-step">Wstecz</button>
-            <button type="button" class="btn next-step">Dalej</button>
-          </div>
-        </div>
-</div>
+       
+          <!-- STEP 3 -->
+          
+          {% include 'api_ins.html' %}
+        
+      
+      
+   
           <!-- STEP 4 -->
           <div data-step="1">
             <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
