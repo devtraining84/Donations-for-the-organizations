@@ -20,13 +20,10 @@ document.addEventListener("DOMContentLoaded", function() {
     
         var data = $('form').serializeArray().reduce(function(obj, item) {
             
-            //var org_text = document.getElementById(obj.organization);
             if(document.getElementById(obj.organization) != null){
                 var idPost=document.getElementById(obj.organization).innerHTML;
             }
             
-            
-
             obj[item.name] = item.value;
             console.log(obj);
             bags.innerText = (obj.bags + " workow z darami");
