@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var date = document.getElementById("date");
     var time = document.getElementById("time");
     var more_info = document.getElementById("more_info");
+    var organization = document.getElementById("organization");
   
 
     
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
             date.innerText = obj.date;
             time.innerText = obj.time;
             more_info.innerText = obj.more_info;
-
+            organization.innerText = obj.organization;
 
             
             return obj;
