@@ -20,6 +20,13 @@ document.addEventListener("DOMContentLoaded", function() {
     
         var data = $('form').serializeArray().reduce(function(obj, item) {
             
+            //var org_text = document.getElementById(obj.organization);
+            if(document.getElementById(obj.organization) != null){
+                var idPost=document.getElementById(obj.organization).innerHTML;
+            }
+            
+            
+
             obj[item.name] = item.value;
             console.log(obj);
             bags.innerText = (obj.bags + " workow z darami");
@@ -30,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
             date.innerText = obj.date;
             time.innerText = obj.time;
             more_info.innerText = obj.more_info;
-            organization.innerText = obj.organization;
+            organization.innerText = idPost;
 
             
             return obj;
