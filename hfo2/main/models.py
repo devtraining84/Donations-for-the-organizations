@@ -1,4 +1,5 @@
 
+from re import T
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -40,20 +41,85 @@ class InstitutionModel(models.Model):
 
 
 
-# class Donation(models.Model):
-#     quantity = models.PositiveSmallIntegerField()
-#     categories = models.ManyToManyField(Category)
-#     institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
-#     address = models.CharField(max_length=40)
-#     phone_number = models.PositiveIntegerField()
-#     city = models.CharField(max_length=32)
-#     zip_code = models.CharField(max_length=6)
-#     pick_up_date = models.DateField()
-#     pick_up_time = models.DateTimeField()
-#     pick_up_comment = models.TextField()
-#     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="Null")
+class DonationModel(models.Model):
+    quantity = models.PositiveSmallIntegerField()
+    categories = models.ManyToManyField(CategoryModel)
+    institution = models.ForeignKey(InstitutionModel, on_delete=models.CASCADE)
+    address = models.CharField(max_length=40)
+    phone_number = models.PositiveIntegerField()
+    city = models.CharField(max_length=32)
+    zip_code = models.CharField(max_length=6)
+    pick_up_date = models.DateField()
+    pick_up_time = models.DateTimeField()
+    pick_up_comment = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.id
+
+
+   
+class TestModel(models.Model):
+    quantity = models.PositiveSmallIntegerField()
+  
+
+
+class TestModel2(models.Model):
+    quantity = models.PositiveSmallIntegerField(blank=True, null=True)
+    address = models.CharField(max_length=40, blank=True, null=True)
+    phone_number = models.PositiveIntegerField(blank=True, null=True)
+    city = models.CharField(max_length=32, blank=True, null=True)
+    zip_code = models.CharField(max_length=6,blank=True, null=True)
+    
+    pick_up_date = models.DateField(blank=True, null=True)
+    pick_up_time = models.TimeField(blank=True, null=True)
+    
+    pick_up_comment = models.TextField(blank=True, null=True)
+
+
+
+
+class TestModel3(models.Model):
+    quantity = models.PositiveSmallIntegerField(blank=True, null=True)
+    address = models.CharField(max_length=40, blank=True, null=True)
+    phone_number = models.PositiveIntegerField(blank=True, null=True)
+    city = models.CharField(max_length=32, blank=True, null=True)
+    zip_code = models.CharField(max_length=6,blank=True, null=True)
+    pick_up_date = models.DateField(blank=True, null=True)
+    pick_up_time = models.TimeField(blank=True, null=True)
+    pick_up_comment = models.TextField(blank=True, null=True) 
+    categories = models.ManyToManyField(CategoryModel)   
+    institution = models.ForeignKey(InstitutionModel, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.id
+
+
+
+# class TestModel3(models.Model):
+#     quantity = models.PositiveSmallIntegerField(null=True, blank=True)
+#     categories = models.ManyToManyField(CategoryModel)
+#     institution = models.ForeignKey(InstitutionModel, on_delete=models.CASCADE)
+#     address = models.CharField(max_length=40, null=True, blank=True)
+#     phone_number = models.PositiveIntegerField(null=True, blank=True)
+#     city = models.CharField(max_length=32, null=True, blank=True)
+#     zip_code = models.CharField(max_length=6, null=True, blank=True)
+#     pick_up_date = models.DateField(null=True, blank=True)
+#     pick_up_time = models.DateTimeField(null=True, blank=True)
+#     pick_up_comment = models.TextField(null=True, blank=True)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
 #     def __str__(self):
 #         return self.id
+
+
+
+
+    
+
+                
+                
+
 
 

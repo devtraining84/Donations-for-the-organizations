@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
             date.innerText = obj.date;
             time.innerText = obj.time;
             more_info.innerText = obj.more_info;
-            organization.innerText = idPost;
+            organization.innerHTML =("Dla organizacji: <b>" + idPost + "</b>");
 
             
             return obj;
