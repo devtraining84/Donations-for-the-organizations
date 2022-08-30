@@ -1,6 +1,6 @@
-<html>
-
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
   <header class="header--form-page">
  
     <div class="slogan container container--90">
@@ -54,30 +54,31 @@
           <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
           
-<form method="post">
+<form method="post" action="">
     {% csrf_token %}
 
 <!-- STEP 1: class .active is switching steps -->
 <div data-step="1" class="active">
     <h3>Zaznacz co chcesz oddać:</h3>
 
+      {% for category in categories %}
     <div class="form-group form-group--checkbox">
       <label>
         <input
           type="checkbox"
-          name="categories"
-          value="clothes-to-use"
+          name= {{ category.name }}
+          value= {{ category.id }}
         />
         <span class="checkbox"></span>
-        <span class="description"
-          >ubrania, które nadają się do ponownego użycia</span
-        >
+        <span class="description">{{ category.name}}  </span>
+         
       </label>
     </div>
-
+      {% endfor %}
+    
 
     <div class="form-group form-group--buttons">
-      <button type="button" class="btn next-step">Dalej</button>
+      <button type="button" class="btn next-step rest_api_exe">Dalej</button>
     </div>
   </div>
 
@@ -98,47 +99,20 @@
     </div>
   </div>
 
+<!-- STEP 3 -->
+
+  {% include 'api_ins.html' %}
+
+
+
+<div class="form-group form-group--buttons">
+  <button type="button" class="btn prev-step">Wstecz</button>
+  <button type="button" class="btn next-step">Dalej</button>
+</div>
+</div>
 
 
   <!-- STEP 4 -->
-  <div data-step="3">
-    <h3>Wybierz organizacje, której chcesz pomóc:</h3>
-
-    <div class="form-group form-group--checkbox">
-      <label>
-        <input type="radio" name="organization" value="1" />
-        <span class="checkbox radio"></span>
-        <span class="description">
-          <div class="title">Fundacja “Bez domu”</div>
-          <div class="subtitle">
-            Cel i misja: Pomoc dla osób nie posiadających miejsca
-            zamieszkania
-          </div>
-        </span>
-      </label>
-    </div>
-
-    <div class="form-group form-group--checkbox">
-      <label>
-        <input type="radio" name="organization" value="2" />
-        <span class="checkbox radio"></span>
-        <span class="description">
-          <div class="title">Fundacja “Dla dzieci"</div>
-          <div class="subtitle">
-            Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji
-            życiowej.
-          </div>
-        </span>
-      </label>
-    </div>
-
-    <div class="form-group form-group--buttons">
-      <button type="button" class="btn prev-step">Wstecz</button>
-      <button type="button" class="btn next-step">Dalej</button>
-    </div>
-  </div>
-
-  <!-- STEP 5 -->
   <div data-step="4">
     <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
 
@@ -186,64 +160,63 @@
     </div>
     <div class="form-group form-group--buttons">
       <button type="button" class="btn prev-step">Wstecz</button>
-      <button type="button" class="btn next-step">Dalej</button>
+      <button type="button" class="btn next-step"  id="button4">Dalej</button>
     </div>
   </div>
-    <!-- STEP 6 -->
+    <!-- STEP 5 -->
     <div data-step="5">
-        <h3>Podsumowanie Twojej darowizny</h3>
+      
+            <h3>Podsumowanie Twojej darowizny</h3>
 
-        <div class="summary">
-          <div class="form-section">
-            <h4>Oddajesz:</h4>
-            <ul>
-              <li>
-                <span class="icon icon-bag"></span>
-                <span class="summary--text"
-                  >4 worki ubrań w dobrym stanie dla dzieci</span
-                >
-              </li>
+            <div class="summary">
+              <div class="form-section">
+                <h4>Oddajesz:</h4>
+                <ul>
+                  <li>
+                    <span class="icon icon-bag"></span>
+                    
+                    <span class="summary--text" id="bags">
+                      4 worki ubrań w dobrym stanie dla dzieci</span>
+                    
+                  </li>
 
-              <li>
-                <span class="icon icon-hand"></span>
-                <span class="summary--text"
-                  >Dla fundacji "Mam marzenie" w Warszawie</span
-                >
-              </li>
-            </ul>
-          </div>
+                  <li>
+                    <span class="icon icon-hand"></span>
+                    <span class="summary--text" id="organization">
+                      Dla fundacji "Mam marzenie" w Warszawie</span
+                    >
+                  </li>
+                </ul>
+              </div>
 
-          <div class="form-section form-section--columns">
-            <div class="form-section--column">
-              <h4>Adres odbioru:</h4>
-              <ul>
-                <li>Prosta 51</li>
-                <li>Warszawa</li>
-                <li>99-098</li>
-                <li>123 456 789</li>
-              </ul>
+              <div class="form-section form-section--columns">
+                <div class="form-section--column">
+                  <h4>Adres odbioru:</h4>
+                  <ul>
+                    <li id="address">Prosta 51</li>
+                    <li id="city">Warszawa</li>
+                    <li id="postcode">99-098</li>
+                    <li id="phone">123 456 789</li>
+                  </ul>
+                </div>
+
+                <div class="form-section--column">
+                  <h4>Termin odbioru:</h4>
+                  <ul>
+                    <li id="date">13/12/2018</li>
+                    <li id="time">15:40</li>
+                    <li id="more_info">Brak uwag</li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
-            <div class="form-section--column">
-              <h4>Termin odbioru:</h4>
-              <ul>
-                <li>13/12/2018</li>
-                <li>15:40</li>
-                <li>Brak uwag</li>
-              </ul>
-            </div>
-          </div>
-        </div>
 
         <div class="form-group form-group--buttons">
           <button type="button" class="btn prev-step">Wstecz</button>
-          <button type="button" class="btn">Button nie dziala</button>
+          <button type="submit" class="btn">Button nie dziala ?</button>
         </div>
       </div>
-
-<input type="submit" value="send">
-
-
 
 
 
@@ -253,9 +226,5 @@
 </div>
 </section>
 
+{% endblock %}
 
-
-</body>
-
-
-</html>

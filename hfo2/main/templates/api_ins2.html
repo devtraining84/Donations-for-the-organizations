@@ -3,11 +3,8 @@
 {% block content %}
 
 
-  <!-- STEP 3 -->
-  <div data-step="3">
-    <h3>Wybierz organizacje, której chcesz pomóc:</h3>
-    <div class="form-group form-group--checkbox">
-           <ul id="li">
+  
+      <ul id="li">
         {% for ins in institutions %}
     
         <label>
@@ -23,13 +20,9 @@
         </label>
     
         {% endfor %}
-      </ul>  </div>
-  
-      {% endblock %}
-
-
-      
-
+      </ul> 
+   
+  {% endblock %}
 
 
 

@@ -111,8 +111,10 @@ class AddDonationView(LoginRequiredMixin, View):
     # pass
     def get(self, request):
         categories = CategoryModel.objects.all()
+        organizations = InstitutionModel.objects.all()
         ctx = {
             'categories': categories,
+            'organizations': organizations,
             }
         return render(request, 'sub_form.html', ctx)
     
@@ -120,7 +122,7 @@ class AddDonationView(LoginRequiredMixin, View):
         
        
         categories_list = request.POST.getlist("categories")
-        categories = CategoryModel.objects.filter(name__in = categories_list)
+        categories = CategoryModel.objects.filter(pk__in = categories_list)
         # pk or name, in depend on value in form
         
         
