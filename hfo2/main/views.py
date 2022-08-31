@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
 from django.views.generic import TemplateView
-from main.models import CategoryModel, InstitutionModel, DonationModel, TestModel, TestModel2
+from main.models import CategoryModel, InstitutionModel, DonationModel
 from main.forms import LoginForm, UserCreateForm, UserEditForm
 
 # Create your views here.
@@ -22,14 +22,19 @@ class LandingPageView(View):
         foundations = InstitutionModel.objects.filter(type="fundation")
         non_gov = InstitutionModel.objects.filter(type__contains="non_gov")
         local = InstitutionModel.objects.filter(type__contains="local")
+        total_bags = sum([x.quantity for x in DonationModel.objects.all()])
+        total_institutions = DonationModel.objects.all().distinct('institution').count()
         ctx = {
             'foundations' : foundations, 
             'non_gov': non_gov,
             'local': local,
+            'total_bags':total_bags,
+            'total_institutions': total_institutions,
         }
         return render(request, 'index.html', ctx)
 
-
+#  'total_bags_count': sum([x.quantity for x in Donation.objects.all()]),
+#             'total_institution_count': Donation.objects.all().distinct('institution').count(),
 
 
 class RegisterView(View):
