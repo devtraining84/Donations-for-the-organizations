@@ -1,4 +1,3 @@
-
 from re import T
 from django.db import models
 from django.contrib.auth.models import User
@@ -21,7 +20,8 @@ class CategoryModel(models.Model):
     name = models.CharField(max_length=96)
         
     def __str__(self):
-        return f"{self.id} : {self.name}"
+        return self.name
+
 
 
 
@@ -36,7 +36,8 @@ class InstitutionModel(models.Model):
     
     def __str__(self):  
         stringtoreturn = f"nazwa: {self.name} typ: {self.type} categoria:{self.categories} opis:{self.description}"
-        return stringtoreturn
+        return self.name
+
 
 
 
@@ -55,44 +56,6 @@ class DonationModel(models.Model):
     
     def __str__(self):
         return self.id
-
-
-   
-# class TestModel(models.Model):
-#     quantity = models.PositiveSmallIntegerField()
-  
-
-
-# class TestModel2(models.Model):
-#     quantity = models.PositiveSmallIntegerField(blank=True, null=True)
-#     address = models.CharField(max_length=40, blank=True, null=True)
-#     phone_number = models.PositiveIntegerField(blank=True, null=True)
-#     city = models.CharField(max_length=32, blank=True, null=True)
-#     zip_code = models.CharField(max_length=6,blank=True, null=True)
-    
-#     pick_up_date = models.DateField(blank=True, null=True)
-#     pick_up_time = models.TimeField(blank=True, null=True)
-    
-#     pick_up_comment = models.TextField(blank=True, null=True)
-
-
-
-
-# class TestModel3(models.Model):
-#     quantity = models.PositiveSmallIntegerField(blank=True, null=True)
-#     address = models.CharField(max_length=40, blank=True, null=True)
-#     phone_number = models.PositiveIntegerField(blank=True, null=True)
-#     city = models.CharField(max_length=32, blank=True, null=True)
-#     zip_code = models.CharField(max_length=6,blank=True, null=True)
-#     pick_up_date = models.DateField(blank=True, null=True)
-#     pick_up_time = models.TimeField(blank=True, null=True)
-#     pick_up_comment = models.TextField(blank=True, null=True) 
-#     categories = models.ManyToManyField(CategoryModel)   
-#     institution = models.ForeignKey(InstitutionModel, on_delete=models.CASCADE)
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    
-#     def __str__(self):
-#         return self.id
 
 
 

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<font size="5">
+
+<center><b>
+Twoje zbiorki:</b>
+<table border="8" class="table">
+
+
+<thead>
+<tr>
+<td>Miasto</td>
+<td>Adres</td>
+<td>kod pocztowy</td>
+<td>Telefon</td>
+<td>Uwagi</td>
+<td>Ilosc</td>
+<td>Data</td>
+<td>Godzina</td>
+<td>Dla ogranizacji</td>
+
+</tr>
+</thead>
+    
+    {% for row in object_list %}
+    <tr>
+        <td>{{ row.city}}</td>
+        <td>{{ row.address }}</td>
+        <td>{{ row.zip_code }}</td>
+        <td>{{ row.phone_number }}</td>
+        <td>{{ row.pick_up_comment }}</td>
+        <td>{{ row.quantity }}</td>
+        <td>{{ row.pick_up_date }}</td>
+        <td>{{ row.pick_up_time }}</td>
+        <td>{{ row.institution }}</td>
+
+
+
+    </tr>
+    {% endfor %}
+
+ 
+</table>
+</font></center>
+{% endblock %}
+
+

@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from main.views import AddDonationView, ConfirmView, LandingPageView, LoginView, LogoutView, RegisterView, SettingsUserView, UserView
+from main.views import AddDonationView, ConfirmView, LandingPageView, LoginView, LogoutView, RegisterView, SettingsUserView, UserView, ShowMyDonationsView
 from main.views import get_institutions_by_id
 urlpatterns = [  
     path('admin/', admin.site.urls),
@@ -28,6 +28,7 @@ urlpatterns = [
     path('setting/', SettingsUserView.as_view(), name="setting-user"),
     path('adddonation/', AddDonationView.as_view(), name="add-donation"),
     path('donationconfirm/', ConfirmView.as_view(), name="confirm"),
+    path('showmydonations/', ShowMyDonationsView.as_view(), name="show-my-donations"),
     #path for REST API:
     path('get_inst_by_id/', get_institutions_by_id, name='get-ins-by-type'),
 ]

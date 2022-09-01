@@ -1,4 +1,5 @@
 import datetime
+
 from operator import is_not
 import re
 from unicodedata import category, name
@@ -7,7 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from main.models import CategoryModel, InstitutionModel, DonationModel
 from main.forms import LoginForm, UserCreateForm, UserEditForm
 
@@ -33,8 +34,7 @@ class LandingPageView(View):
         }
         return render(request, 'index.html', ctx)
 
-#  'total_bags_count': sum([x.quantity for x in Donation.objects.all()]),
-#             'total_institution_count': Donation.objects.all().distinct('institution').count(),
+
 
 
 class RegisterView(View):
@@ -49,7 +49,6 @@ class RegisterView(View):
             return redirect('../login/#login-page')
         else:
             return render(request, 'register.html', {'form': form, 'error': 'error'})
-
 
 
 
@@ -155,14 +154,24 @@ class ConfirmView(TemplateView):
 
 
 
+class ShowMyDonationsView(ListView):
+    model = DonationModel
+    template_name = 'my_donations.html'
+    pagination = 5
+    
+    def get_queryset(self, **kwargs):
+       qs = super().get_queryset(**kwargs)
+       return qs.filter(user=self.request.user)
+       
+
+
+
+#views for REST API:
 def get_institutions_by_id(request):
     type_ids = request.GET.getlist('type_ids')
     if type_ids is not None:
-        
         institutions = InstitutionModel.objects.filter(categories__pk__in=type_ids).distinct() 
-       
     else:
-        
         institutions = InstitutionModel.objects.all()
     return render(request, "api_ins.html", {'institutions':institutions,})            
             
