@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("test of step 5");
+    
     var button4 = document.getElementById("button4");
     var bags = document.getElementById("bags");
     var address = document.getElementById("address");

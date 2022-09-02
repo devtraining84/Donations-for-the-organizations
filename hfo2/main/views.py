@@ -118,7 +118,7 @@ class AddDonationView(LoginRequiredMixin, View):
              'categories': categories,
              }
          
-        return render(request,'sub_form.html',ctx)
+        return render(request,'form.html',ctx)
     
     def post(self, request):
         categories_list = request.POST.getlist("categories")
